@@ -1,5 +1,5 @@
-name = "hexo"
-# compatibility_date = "2025-12-08"
+name = "blog"
+compatibility_date = "2025-12-08"
 
 [assets]
 directory = "./public"
