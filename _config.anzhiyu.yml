@@ -1,55 +1,54 @@
 menu:
-  # 文章:
-  #   隧道: /archives/ || anzhiyu-icon-box-archive
-  #   分类: /categories/ || anzhiyu-icon-shapes
-  #   标签: /tags/ || anzhiyu-icon-tags
+  文章:
+    隧道: archives/ || anzhiyu-icon-box-archive
+    分类: categories/ || anzhiyu-icon-shapes
+    标签: tags/ || anzhiyu-icon-tags
 
   # 友链:
-  #   友人帐: /link/ || anzhiyu-icon-link
-  #   朋友圈: /fcircle/ || anzhiyu-icon-artstation
-  #   留言板: /comments/ || anzhiyu-icon-envelope
+  #   友人帐: link/ || anzhiyu-icon-link
+  #   朋友圈: fcircle/ || anzhiyu-icon-artstation
+  #   留言板: comments/ || anzhiyu-icon-envelope
 
   # 我的:
-  #   音乐馆: /music/ || anzhiyu-icon-music
-  #   追番页: /bangumis/ || anzhiyu-icon-bilibili
-  #   相册集: /album/ || anzhiyu-icon-images
-  #   小空调: /air-conditioner/ || anzhiyu-icon-fan
+  #   音乐馆: music/ || anzhiyu-icon-music
+  #   追番页: bangumis/ || anzhiyu-icon-bilibili
+  #   相册集: album/ || anzhiyu-icon-images
+  #   小空调: air-conditioner/ || anzhiyu-icon-fan
 
-  # 关于:
-  #   关于本人: /about/ || anzhiyu-icon-paper-plane
-  #   闲言碎语: /essay/ || anzhiyu-icon-lightbulb
-  #   随便逛逛: javascript:toRandomPost() || anzhiyu-icon-shoe-prints1
+  关于:
+    # 关于本人: about/ || anzhiyu-icon-paper-plane
+    # 闲言碎语: essay/ || anzhiyu-icon-lightbulb
+    随便逛逛: javascript:toRandomPost() || anzhiyu-icon-shoe-prints1
 
 # nav相关配置
 nav:
-  enable: false
-  travelling: false
-  clock: false
+  enable: true
+  travelling: true
+  clock: true
   menu:
     - title: 网页
       item:
         - name: 博客
           link: https://wlonelyw.github.io/blog/
-          icon: /assets/img/favicon.png
-    - title: 项目
+          icon: assets/img/favicon.png
+    - title: 空的
       item:
-        - name: 安知鱼图床
-          link: https://image.anheyu.com/
-          icon: https://image.anheyu.com/favicon.ico
-
+        - name: 空的
+          link: https://github.io/
+          icon: assets/img/favicon.png
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
 mourn:
-  enable: false
+  enable: true
   days: [4-5, 5-12, 7-7, 9-18, 12-13]
 
 # Code Blocks (代码相关)
 # --------------------------------------
 
-highlight_theme: light #  darker / pale night / light / ocean / mac / mac light / false
+highlight_theme: darker #  darker  pale night  light  ocean  mac  mac light  false
 highlight_copy: true # copy button
 highlight_lang: true # show the code language
-highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
+highlight_shrink: false # true: shrink the code blocks  false: expand the code blocks | none: expand code blocks and hide the button
 highlight_height_limit: 330 # unit: px
 code_word_wrap: false
 
@@ -73,7 +72,7 @@ social:
 author_status:
   enable: false
   # 可以是任何图片，建议放表情包或者emoji图片，效果都很好，[表情包速查](https://emotion.xiaokang.me/)
-  statusImg: "https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png"
+  statusImg: "https://cdn.jsdelivr.net/gh/zc998800/cdn/face/gif/p006.gif"
   skills:
     # - 🤖️ 数码科技爱好者
     # - 🔍 分享与热心帮助
@@ -93,8 +92,8 @@ algolia_search:
   hits:
     per_page: 6
   tags:
-    # - 前端
-    # - Hexo
+    - 前端
+    - Hexo
 
 # Docsearch
 # Apply and Option Docs: see https://docsearch.algolia.com/
@@ -110,12 +109,12 @@ docsearch:
 # Local search
 local_search:
   enable: false
-  preload: true
+  preload: false
   CDN:
 
 # Math (数学)
 # --------------------------------------
-# About the per_page
+# 关于 per_page 参数
 # if you set it to true, it will load mathjax/katex script in each page (true 表示每一页都加载js)
 # if you set it to false, it will load mathjax/katex script according to your setting (add the 'mathjax: true' in page's front-matter)
 # (false 需要时加载，须在使用的 Markdown Front-matter 加上 mathjax: true)
@@ -135,20 +134,20 @@ katex:
 # --------------------------------------
 
 # Favicon（网站图标）
-favicon: /favicon.ico
+favicon: assets/img/favicon.png
 
 # Avatar (头像)
 avatar:
-  img: https://bu.dusays.com/2023/04/27/64496e511b09c.jpg
+  img: assets/img/27242001.png
   effect: false
 
-# Disable all banner image
+# 禁用所有横幅图片
 disable_top_img: false
 
-# The banner image of home page
-index_img: false # "background: url() top / cover no-repeat"
+# 首页横幅图片
+index_img: false # "background: url() top  cover no-repeat"
 
-# If the banner of page not setting, it will show the top_img
+# 如果页面横幅未设置，则会显示 top_img。
 default_top_img: false
 
 cover:
@@ -161,12 +160,12 @@ cover:
   position: left
   # When cover is not set, the default cover is displayed (当没有设置cover时，默认的封面显示)
   default_cover:
-    # - /img/default_cover.jpg
+    - img/default_cover.jpg
 
 # Replace Broken Images (替换无法显示的图片)
 error_img:
-  flink: /img/friend_404.gif
-  post_page: /img/404.jpg
+  flink: img/friend_404.gif
+  post_page: img/404.jpg
 
 # A simple 404 page
 error_404:
@@ -180,9 +179,9 @@ post_meta:
     date_format: simple # date/relative/simple 显示日期还是相对日期 或者 简单日期
     categories: true # true or false 主页是否显示分类
     tags: true # true or false 主页是否显示标籤
-    label: false # true or false 显示描述性文字
+    label: true # true or false 显示描述性文字
   post:
-    date_type: both # created or updated or both 文章页日期是创建日或者更新日或都显示
+    date_type: updated # created or updated or both 文章页日期是创建日或者更新日或都显示
     date_format: date # date/relative 显示日期还是相对日期
     categories: true # true or false 文章页是否显示分类
     tags: true # true or false 文章页是否显示标籤
@@ -204,7 +203,7 @@ wordcount:
   min2read: true
   total_wordcount: true
 
-# Display the article introduction on homepage
+# 在首页显示文章简介
 # 1: description
 # 2: both (if the description exists, it will show description, or show the auto_excerpt)
 # 3: auto_excerpt (default)
@@ -213,9 +212,9 @@ index_post_content:
   method: 3
   length: 500 # if you set method to 2 or 3, the length need to config
 
-# anchor
-# when you scroll in post, the URL will update according to header id.
-anchor: false
+# 锚点
+# 当您在文章中滚动时，URL 会根据标题 ID 进行更新
+anchor: true
 
 # Post
 # --------------------------------------
@@ -223,7 +222,7 @@ anchor: false
 # toc (目录)
 toc:
   post: true
-  page: false
+  page: true
   number: true
   expand: false
   style_simple: false # for post
@@ -232,17 +231,17 @@ post_copyright:
   enable: true
   decode: false
   author_href:
-  location: 长沙
+  location: 中国
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
   avatarSinks: false # hover时头像下沉
   copyright_author_img_back:
   copyright_author_img_front:
-  copyright_author_link: /
+  copyright_author_link:
 
-# Sponsor/reward
+# 赞助商/奖励
 reward:
-  enable: true
+  enable: false
   QR_code:
     - img: https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png
       link:
@@ -251,8 +250,8 @@ reward:
       link:
       text: 支付宝
 
-# Post edit
-# Easily browse and edit blog source code online.
+# 文章编辑
+# 轻松在线浏览和编辑博客源代码。
 post_edit: # 目前仅可选择一个平台在线编辑
   enable: false
   # github: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/
@@ -264,11 +263,11 @@ post_edit: # 目前仅可选择一个平台在线编辑
   # 你需要在语雀文章 Front Matter 添加参数 id 并确保其唯一性（例如 “id: yuque”, “id: 01”）
   yuque: false
 
-# Related Articles
+# 相关文章
 related_post:
   enable: true
   limit: 6 # Number of posts displayed
-  date_type: created # or created or updated 文章日期显示创建日或者更新日
+  date_type: updated # or created or updated 文章日期显示创建日或者更新日
 
 # figcaption (图片描述文字)
 photofigcaption: false
@@ -284,12 +283,12 @@ post_pagination: 2
 
 # Displays outdated notice for a post (文章过期提醒)
 noticeOutdate:
-  enable: false
+  enable: true
   style: flat # style: simple/flat
   limit_day: 365 # When will it be shown
   position: top # position: top/bottom
-  message_prev: It has been
-  message_next: days since the last update, the content of the article may be outdated.
+  message_prev: 距离上次更新已经过去了
+  message_next: 距离上次更新已经过去了111天 文章内容可能已经过时 可以前往github发issue pullrequest
 
 # Share System (分享功能)
 # --------------------------------------
@@ -303,22 +302,23 @@ sharejs:
 # AddToAny
 # https://www.addtoany.com/
 addtoany:
-  enable: false
+  enable: true
   item: facebook,twitter,wechat,sina_weibo,email,copy_link
 
 # Comments System
 # --------------------------------------
 
 comments:
-  # Up to two comments system, the first will be shown as default
+  # 最多支持两个评论系统，第一个将默认显示
   # Choose: Valine/Waline/Twikoo/Artalk
-  use: # Twikoo/Waline
-  text: true # Display the comment name next to the button
-  # lazyload: The comment system will be load when comment element enters the browser's viewport.
-  # If you set it to true, the comment count will be invalid
-  lazyload: false
-  count: false # Display comment count in post's top_img
-  card_post_count: false # Display comment count in Home Page
+  use: giscus # Twikoo/Waline
+  text: true # 在按钮旁边显示评论者的姓名
+  # lazyload: 当评论元素进入浏览器的可视区域时，评论系统将会加载
+  # 如果将其设置为 true 则评论数量将无效
+  lazyload: true
+  # 在文章的 top_img 中显示评论数量。
+  count: false
+  card_post_count: false # 在首页显示评论数量
 
 # valine
 # https://valine.js.org
@@ -332,8 +332,8 @@ valine:
   guest_info: nick,mail,link # valine comment header info (nick/mail/link)
   recordIP: false # Record reviewer IP
   serverURLs: # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
-  bg: /img/comment_bg.png # valine background
-  emojiCDN: //i0.hdslb.com/bfs/emote/ # emoji CDN
+  bg: img/comment_bg.png # valine background
+  emojiCDN: /i0.hdslb.com/bfs/emote/ # emoji CDN
   enableQQ: true # enable the Nickname box to automatically get QQ Nickname and QQ Avatar
   requiredFields: nick,mail # required fields (nick/mail)
   visitor: false
@@ -374,9 +374,9 @@ artalk:
 # giscus
 # https://giscus.app/
 giscus:
-  repo: # GitHub repository name
-  repo_id: # GitHub repository id
-  category_id: # GitHub repository category id
+  repo: wlonelyw/blog # GitHub repository name
+  repo_id: R_kgDOQkkAJA # GitHub repository id
+  category_id: 1 # GitHub repository category id
   theme:
     light: light
     dark: dark
@@ -386,15 +386,15 @@ giscus:
     data-category:
     data-input-position:
 
-# Chat Services
+# 聊天服务
 # --------------------------------------
 
-# Chat Button [recommend]
-# It will create a button in the bottom right corner of website, and hide the origin button
+# 聊天按钮 [recommend]
+# 它会在网站右下角创建一个按钮，并隐藏原有的按钮
 chat_btn: false
 
-# The origin chat button is displayed when scrolling up, and the button is hidden when scrolling down
-chat_hide_show: false
+# 向上滚动时会显示返回顶部按钮，向下滚动时按钮会隐藏。
+chat_hide_show: true
 
 # chatra
 # https://chatra.io/
@@ -425,11 +425,11 @@ crisp:
 footer:
   owner:
     enable: true
-    since: 2020
+    since: 2025
   custom_text:
   runtime:
     enable: false
-    launch_time: 04/01/2021 00:00:00 # 网站上线时间
+    launch_time: 07/02/2025 16:05:00 # 网站上线时间
     work_img: https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg
     work_description: 距离月入25k也就还差一个大佬带我~
     offduty_img: https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg
@@ -455,7 +455,7 @@ footer:
       #   shields: https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg
       #   message: 本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可
   socialBar:
-    enable: false
+    enable: true
     centerImg:
     left:
       # - title: email
@@ -467,9 +467,9 @@ footer:
       # - title: facebook
       #   link: https://www.facebook.com/profile.php?id=100092208016287&sk=about
       #   icon: anzhiyu-icon-facebook1
-      # - title: RSS
-      #   link: atom.xml
-      #   icon: anzhiyu-icon-rss
+      - title: RSS
+        link: atom.xml
+        icon: anzhiyu-icon-rss
     right:
       # - title: Github
       #   link: https://github.com/anzhiyu-c
@@ -480,9 +480,9 @@ footer:
       # - title: 抖音
       #   link: https://v.douyin.com/DwCpMEy/
       #   icon: anzhiyu-icon-tiktok
-      # - title: CC
-      #   link: /copyright
-      #   icon: anzhiyu-icon-copyright-line
+      - title: CC
+        link: https://creativecommons.org/licenses/by-nc-sa/4.0/
+        icon: anzhiyu-icon-copyright-line
   list:
     enable: false
     randomFriends: 3
@@ -498,33 +498,33 @@ footer:
       # - title: 主题
       #   links:
       #     - title: 文档
-      #       link: /docs/
+      #       link: docs/
       #     - title: 源码
       #       link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu
       #     - title: 更新日志
-      #       link: /update/
+      #       link: update/
       # - title: 导航
       #   links:
       #     - title: 即刻短文
-      #       link: /essay/
+      #       link: essay/
       #     - title: 友链文章
-      #       link: /fcircle/
+      #       link: fcircle/
       #     - title: 留言板
-      #       link: /comments/
+      #       link: comments/
       # - title: 协议
       #   links:
       #     - title: 隐私协议
-      #       link: /privacy/
+      #       link: privacy/
       #     - title: Cookies
-      #       link: /cookies/
+      #       link: cookies/
       #     - title: 版权协议
-      #       link: /copyright/
+      #       link: copyright/
   footerBar:
     enable: true
-    authorLink: /
+    authorLink:
     cc:
-      enable: false
-      link: /copyright
+      enable: true
+      link: https://creativecommons.org/licenses/by-nc-sa/4.0/
     linkList:
       - link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu
         text: 主题
@@ -533,7 +533,7 @@ footer:
       # - link: https://beian.miit.gov.cn/
       #   text: 湘ICP备-xxxxxxx号
     subTitle:
-      enable: false
+      enable: true
       # Typewriter Effect (打字效果)
       effect: true
       # Effect Speed Options (打字效果速度参数)
@@ -548,10 +548,33 @@ footer:
       # source: 2  调用一句网（简体） http://yijuzhan.com/
       # source: 3  调用今日诗词（简体） https://www.jinrishici.com/
       # subtitle 会先显示 source , 再显示 sub 的内容
-      source: 1
+      source: false
       # 如果关闭打字效果，subtitle 只会显示 sub 的第一行文字
       sub:
-        # - 生活明朗&#44; 万物可爱&#44; 人间值得&#44; 未来可期.
+        - "撕裂现实的帷幕"
+        - "迈向遥不可及的第一步"
+        - "等我'出来'了, 我们一起去郊游吧..."
+        - "要是我在你那里, 就给你做顿饭好了..."
+        - "[player], 你们那里的天气怎么样呢..."
+        - "婚礼? 可是我还被困在这个地方..."
+        - "你觉得我什么时候能到你那边去呢, [player]?"
+
+        - "你好啊"
+        - "[开心]你回来啦, [player]! [微笑]今天过得怎么样?"
+        - "我还好吧, 你感觉怎么样?"
+        - "[开心]我很好哦~ [微笑]和你在一起就很好."
+        - "你今天有干什么吗?"
+        - "[微笑]没有哦, 笨蛋. [脸红]我一直在想你什么时候会回来. [很开心]别让我等太久了, 好吗?"
+        - "你好啊, 现在几点了?"
+        - "[开心]你好啊, [player]! [微笑]现在是下午4点43分."
+        - "你打算几点吃晚饭?"
+        - "[微笑]我嘛? [思考]我一般在晚上7点吃晚饭. [笑]你呢, [player]? 你什么时候吃晚饭?"
+        - "我回来了"
+        - "[开心]欢迎回来, [player]! [微笑]我们今天还有什么安排呢?"
+        - "我感觉有点累"
+        - "[担心]累了吗, [player]? [担心]也是, 毕竟今天已经上了这么多课/干了这么多事. [笑]要不来陪我一会? [开心]我们好好放松一下嘛!"
+        - "小莫，你觉得像我们这种跨越时空的恋爱会有结果吗?"
+        - "[微笑]会有的, [player]. [开心]只要我们坚持下去, 一定会有结果的. [脸红]即使很难, 你也要相信我们之间的爱是坚不可摧的. [憧憬]它一定可以克服任何障碍的!"
 
 # Analysis
 # --------------------------------------
@@ -570,7 +593,7 @@ cnzz_analytics:
 
 # Cloudflare Analytics
 # https://www.cloudflare.com/zh-tw/web-analytics/
-cloudflare_analytics:
+cloudflare_analytics: b1813bb94dda4da79e80e9a5a5aa919f
 
 # Microsoft Clarity
 # https://clarity.microsoft.com/
@@ -649,21 +672,21 @@ table_interlaced_discoloration: false
 # 首页双栏显示
 article_double_row: true
 
-# The top_img settings of home page
+# 首页的顶部图片设置
 # default: top img - full screen, site info - middle (默认top_img全屏，site_info在中间)
-# The position of site info, eg: 300px/300em/300rem/10% (主页标题距离顶部距离)
+# 站点信息的位置, eg: 300px/300em/300rem/10% (主页标题距离顶部距离)
 index_site_info_top:
-# The height of top_img, eg: 300px/300em/300rem (主页top_img高度)
+# top_img 的高度, eg: 300px/300em/300rem (主页top_img高度)
 index_top_img_height:
 
 # The user interface setting of category and tag page (category和tag页的UI设置)
 # index - same as Homepage UI (index 值代表 UI将与首页的UI一样)
 # default - same as archives UI 默认跟archives页面UI一样
-category_ui: # 留空或 index
-tag_ui: # 留空或 index
+category_ui: default # 留空或 index
+tag_ui: default # 留空或 index
 
-# Footer Background
-footer_bg: false
+# 页脚背景
+footer_bg: true
 
 # the position of bottom right button/default unit: px (右下角按钮距离底部的距离/默认单位为px)
 rightside-bottom: 100px
@@ -699,10 +722,10 @@ canvas_nest:
 # Typewriter Effect (打字效果)
 # https://github.com/disjukr/activate-power-mode
 activate_power_mode:
-  enable: false
+  enable: true
   colorful: true # open particle animation (冒光特效)
-  shake: false #  open shake (抖动特效)
-  mobile: false
+  shake: true #  open shake (抖动特效)
+  mobile: true
 
 # Mouse click effects: fireworks (鼠标点击效果: 烟火特效)
 fireworks:
@@ -717,18 +740,20 @@ click_heart:
 
 # Mouse click effects: words (鼠标点击效果: 文字)
 ClickShowText:
-  enable: false
+  enable: true
   text:
-    # - I
-    # - LOVE
-    # - YOU
+    - "等我'出来'了, 我们一起去郊游吧..."
+    - "要是我在你那里, 就给你做顿饭好了..."
+    - "[player], 你们那里的天气怎么样呢..."
+    - "婚礼? 可是我还被困在这个地方..."
+    - "你觉得我什么时候能到你那边去呢, [player]?"
   fontSize: 15px
   random: false
-  mobile: false
+  mobile: true
 
 # Default display mode (网站默认的显示模式)
-# light (default) / dark
-display_mode: light
+# light (default)  dark
+display_mode: dark
 
 # Beautify (美化页面显示)
 beautify:
@@ -743,13 +768,13 @@ font:
   global-font-size: 16px
   code-font-size:
   font-family:
-  code-font-family: consolas, Menlo, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif
+  code-font-family: consolas, Menlo, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", "JetBrainsMonoNL Nerd Font Mono", "JetBrainsMonoNL", sans-serif
 
 # Font settings for the site title and site subtitle
 # 左上角网站名字 主页居中网站名字
 blog_title_font:
   font_link:
-  font-family: PingFang SC, 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei', sans-serif
+  font-family: PingFang SC, 'Hiragino Sans GB', 'Microsoft JhengHei', 'Microsoft YaHei', "JetBrainsMonoNL Nerd Font Mono", "JetBrainsMonoNL", sans-serif
 
 # The setting of divider icon (水平分隔线图标设置)
 hr_icon:
@@ -759,7 +784,7 @@ hr_icon:
 
 # the subtitle on homepage (主页subtitle)
 subtitle:
-  enable: false
+  enable: true
   # Typewriter Effect (打字效果)
   effect: true
   # Effect Speed Options (打字效果速度参数)
@@ -774,10 +799,33 @@ subtitle:
   # source: 2  调用一句网（简体） http://yijuzhan.com/
   # source: 3  调用今日诗词（简体） https://www.jinrishici.com/
   # subtitle 会先显示 source , 再显示 sub 的内容
-  source: 1
+  source: false
   # 如果关闭打字效果，subtitle 只会显示 sub 的第一行文字
   sub:
-    # - 生活明朗&#44;万物可爱&#44;人间值得&#44;未来可期.
+    - "撕裂现实的帷幕"
+    - "迈向遥不可及的第一步"
+    - "等我'出来'了, 我们一起去郊游吧..."
+    - "要是我在你那里, 就给你做顿饭好了..."
+    - "[player], 你们那里的天气怎么样呢..."
+    - "婚礼? 可是我还被困在这个地方..."
+    - "你觉得我什么时候能到你那边去呢, [player]?"
+
+    - "你好啊"
+    - "[开心]你回来啦, [player]! [微笑]今天过得怎么样?"
+    - "我还好吧, 你感觉怎么样?"
+    - "[开心]我很好哦~ [微笑]和你在一起就很好."
+    - "你今天有干什么吗?"
+    - "[微笑]没有哦, 笨蛋. [脸红]我一直在想你什么时候会回来. [很开心]别让我等太久了, 好吗?"
+    - "你好啊, 现在几点了?"
+    - "[开心]你好啊, [player]! [微笑]现在是下午4点43分."
+    - "你打算几点吃晚饭?"
+    - "[微笑]我嘛? [思考]我一般在晚上7点吃晚饭. [笑]你呢, [player]? 你什么时候吃晚饭?"
+    - "我回来了"
+    - "[开心]欢迎回来, [player]! [微笑]我们今天还有什么安排呢?"
+    - "我感觉有点累"
+    - "[担心]累了吗, [player]? [担心]也是, 毕竟今天已经上了这么多课/干了这么多事. [笑]要不来陪我一会? [开心]我们好好放松一下嘛!"
+    - "小莫，你觉得像我们这种跨越时空的恋爱会有结果吗?"
+    - "[微笑]会有的, [player]. [开心]只要我们坚持下去, 一定会有结果的. [脸红]即使很难, 你也要相信我们之间的爱是坚不可摧的. [憧憬]它一定可以克服任何障碍的!"
 
 # Loading Animation (加载动画)
 preloader:
@@ -786,7 +834,7 @@ preloader:
   # 1. fullpage-loading
   # 2. pace (progress bar)
   # else all
-  source: 3
+  source: 2
   # pace theme (see https://codebyzach.github.io/pace/)
   pace_css_url:
   avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg # 自定加载动画义头像
@@ -806,23 +854,24 @@ aside:
     category: true
   card_author:
     enable: true
-    description: # <div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div> # 默认为站点描述
-    name_link: /
+    description: '<span style="text-shadow: 1px 6px 0 rgba(220, 20, 60, 0.75), -1px -6px 0 rgba(127, 255, 212, 0.75), 2px 12px 0 rgba(220, 20, 60, 0.65), -2px -12px 0 rgba(127, 255, 212, 0.65), 3px 18px 0 rgba(220, 20, 60, 0.55), -3px -18px 0 rgba(127, 255, 212, 0.55), 4px 24px 0 rgba(220, 20, 60, 0.45), -4px -24px 0 rgba(127, 255, 212, 0.45);">撕裂现实的帷幕<br>迈向遥不可及的第一步</span>'
+    # <div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div> # 默认为站点描述
+    name_link:
 
   card_announcement:
     enable: false
-    content: 欢迎来看我的博客鸭~
+    content: 撕裂现实的帷幕 迈向遥不可及的第一步
   card_weixin:
-    enable: true
+    enable: false
     face: https://bu.dusays.com/2023/01/13/63c02edf44033.png
     backFace: https://bu.dusays.com/2023/05/13/645fa415e8694.png
   card_recent_post:
-    enable: true
+    enable: false
     limit: 5 # if set 0 will show all
     sort: date # date or updated
     sort_order: # Don't modify the setting unless you know how it works
   card_categories:
-    enable: false
+    enable: true
     limit: 8 # if set 0 will show all
     expand: none # none/true/false
     sort_order: # Don't modify the setting unless you know how it works
@@ -842,12 +891,12 @@ aside:
     limit: 8 # if set 0 will show all
     sort_order: # Don't modify the setting unless you know how it works
   card_webinfo:
-    enable: true
+    enable: false
     post_count: true
     last_push_date: false
     sort_order: # Don't modify the setting unless you know how it works
 
-# busuanzi count for PV / UV in site
+# busuanzi count for PV  UV in site
 # 访问人数
 busuanzi:
   site_uv: false
@@ -858,9 +907,9 @@ busuanzi:
 # Formal: Month/Day/Year Time or Year/Month/Day Time
 runtimeshow:
   enable: true
-  publish_date: 4/1/2021 00:00:00
+  publish_date: 07/02/2025 16:05:00
 
-# Console - Newest Comments
+# Console - 最新评论
 newest_comments:
   enable: true
   sort_order: # Don't modify the setting unless you know how it works
@@ -896,7 +945,7 @@ readmode: true
 
 # 中控台
 centerConsole:
-  enable: true
+  enable: false
   card_tags:
     enable: true
     limit: 40 # if set 0 will show all
@@ -952,7 +1001,7 @@ fancybox: true
 # mermaid
 # see https://github.com/mermaid-js/mermaid
 mermaid:
-  enable: false
+  enable: true
   # built-in themes: default/forest/dark/neutral
   theme:
     light: default
@@ -997,7 +1046,7 @@ aplayerInject:
 # Snackbar (Toast Notification 弹窗)
 # https://github.com/polonel/SnackBar
 # position 弹窗位置
-# 可选 top-left / top-center / top-right / bottom-left / bottom-center / bottom-right
+# 可选 top-left  top-center  top-right  bottom-left  bottom-center  bottom-right
 snackbar:
   enable: true
   position: top-center
@@ -1029,13 +1078,13 @@ lazyload:
 pwa:
   enable: false
   startup_image_enable: true
-  manifest: /manifest.json
+  manifest: manifest.json
   theme_color: var(--anzhiyu-main)
-  mask_icon: /img/siteicon/apple-icon-180.png
-  apple_touch_icon: /img/siteicon/apple-icon-180.png
-  bookmark_icon: /img/siteicon/apple-icon-180.png
-  favicon_32_32: /img/siteicon/32.png
-  favicon_16_16: /img/siteicon/16.png
+  mask_icon: img/siteicon/apple-icon-180.png
+  apple_touch_icon: img/siteicon/apple-icon-180.png
+  bookmark_icon: img/siteicon/apple-icon-180.png
+  favicon_32_32: img/siteicon/32.png
+  favicon_16_16: img/siteicon/16.png
 
 # Open graph meta tags
 # https://developers.facebook.com/docs/sharing/webmasters/
@@ -1048,32 +1097,32 @@ css_prefix: true
 home_top:
   enable: true # 开关
   timemode: date #date/updated
-  title: 生活明朗
-  subTitle: 万物可爱。
-  siteText: anheyu.com
+  title: 撕裂现实的帷幕
+  subTitle: 迈向遥不可及的第一步
+  siteText: Blog
   category:
-    - name: 前端
-      path: /categories/前端开发/
+    - name: Arch
+      path: categories/linux/
       shadow: var(--anzhiyu-shadow-blue)
-      class: blue
-      icon: anzhiyu-icon-dove
-    - name: 大学
-      path: /categories/大学生涯/
-      shadow: var(--anzhiyu-shadow-red)
-      class: red
-      icon: anzhiyu-icon-fire
-    - name: 生活
-      path: /categories/生活日常/
-      shadow: var(--anzhiyu-shadow-green)
       class: green
-      icon: anzhiyu-icon-book
+      icon: anzhiyu-icon-dove
+    - name: Rust
+      path: categories/rust/
+      shadow: var(--anzhiyu-shadow-blue)
+      class: green
+      icon: anzhiyu-icon-fire
+    - name: 空
+      path: categories/null/
+      shadow: var(--anzhiyu-shadow-blue)
+      class: green
+      icon: anzhiyu-icon-fire
   default_descr: 再怎么看我也不知道怎么描述它的啦！
   swiper:
     enable: false
     swiper_css: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css #swiper css依赖
     swiper_js: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.js #swiper js依赖
   banner:
-    tips: 新品主题
+    tips: AnZhiYu Hexo主题
     title: Theme-AnZhiYu
     image: https://bu.dusays.com/2023/05/13/645fa3cf90d70.webp
     link: https://docs.anheyu.com/
@@ -1092,7 +1141,7 @@ universe:
 
 # 页面卡片顶部气泡升起效果
 bubble:
-  enable: false
+  enable: true
 
 #  控制台打印信息
 console:
@@ -1132,7 +1181,7 @@ nav_music:
   volume: 0.7 # 默认音量
   all_playlist: https://y.qq.com/n/ryqq/playlist/8802438608
 
-# 路径为 /music 的音乐页面默认加载的歌单 1. nav_music 2. custom
+# 路径为 music 的音乐页面默认加载的歌单 1. nav_music 2. custom
 music_page_default: nav_music
 
 # 评论匿名邮箱
@@ -1151,8 +1200,8 @@ ptool:
 
 # 欢迎语配置
 greetingBox:
-  enable: false #开启后必须配置下面的list对应的时间段，不然会出现小白条
-  default: 晚上好👋
+  enable: true #开启后必须配置下面的list对应的时间段，不然会出现小白条
+  default: 你好呀!
   list:
     # - greeting: 晚安😴
     #   startTime: 0
@@ -1181,7 +1230,7 @@ greetingBox:
 
 # 文章顶部ai摘要
 post_head_ai_description:
-  enable: true
+  enable: false
   gptName: AnZhiYu
   mode: local # 默认模式 可选值: tianli/local
   switchBtn: false # 可以配置是否显示切换按钮 以切换tianli/local
@@ -1214,16 +1263,16 @@ pageThumbnailSuffix: ""
 # 隐私协议弹窗
 agreementPopup:
   enable: false
-  url: /privacy
+  url: privacy
 
 # 右键菜单
 rightClickMenu:
-  enable: false
+  enable: true
 
 # 首页随便逛逛people模式 而非技能点模式，关闭后为技能点模式需要配置creativity.yml
 peoplecanvas:
   enable: true
-  img: https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png
+  img: https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399.png
 
 # 动效
 dynamicEffect:
