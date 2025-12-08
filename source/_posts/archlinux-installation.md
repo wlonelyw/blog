@@ -221,7 +221,7 @@ cat /mnt/etc/fstab
 
 ### 系统设置
 
-#### chrot
+#### chroot
 chroot
 ```bash
 arch-chroot /mnt
