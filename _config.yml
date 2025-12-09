@@ -109,3 +109,23 @@ theme: anzhiyu
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+feed:
+    type: atom
+    path: atom.xml
+    limit: 20
+    hub:
+    content:
+    content_limit: 140
+    content_limit_delim: " "
+    order_by: -date
+    icon:
+sitemap:
+    path:
+        - sitemap.xml
+        - sitemap.txt
+    template: ./sitemap_template.xml
+    template_txt: ./sitemap_template.txt
+    rel: false
+    tags: true
+    categories: true
