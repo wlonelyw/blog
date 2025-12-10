@@ -2,4 +2,4 @@
 由于部署在Cloudflare Worker上
 Hexo配置文件指向的不是github.io域名
 使用github.io访问除了html和文字其他的都无法加载
-<small>(其实可以删掉workflows</small>
+<small>(其实可以删掉workflows)</small>
