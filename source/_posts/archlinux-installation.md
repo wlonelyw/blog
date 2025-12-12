@@ -2,8 +2,8 @@
 title: ArchLinux 安装笔记
 date: 12/07/2025
 updated:
-tags: Arch
-categories: Arch
+tags: Arch Linux
+categories: ArchLinux
 keywords: ArchLinux Linux
 description: ArchLinux 安装笔记
 top_img: cover.jpeg
