@@ -29,9 +29,9 @@ background: "#fff"
 
 # 介绍
 
-使用 **ext4(GPT)** 和 **zram** **grub**(尝试 systemd-boot)
+UEFI EXT4 BTRFS ZRAM ZSWAP SWAP GRUB SYSTEMD-BOOT
 
-内容部分来自
+内容大部分部分来自
 
 [Archlinux Wiki](https://wiki.archlinux.org/title/Installation_guide)
 
@@ -121,7 +121,13 @@ ping 1.1.1.1
 
 ```bash
 timedatectl set-ntp true
+timedatectl set-timezone Asia/Shanghai
 timedatectl status
+```
+
+或者全自动
+```bash
+bash -c "$(curl -sSL https://archlinux-sh.pages.dev/sh/mirrors.sh)"
 ```
 
 将系统时间与网络时间进行同步
@@ -139,6 +145,11 @@ Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch # 中国科学技�
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch # 清华大学开源软件镜像站
 Server = https://repo.huaweicloud.com/archlinux/$repo/os/$arch # 华为开源镜像站
 Server = http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch # 兰州大学开源镜像站
+```
+
+或者全自动
+```bash
+bash -c "$(curl -sSL https://archlinux-sh.pages.dev/sh/mirrors.sh)"
 ```
 
 ## 分区
@@ -205,7 +216,7 @@ df -h
 
 pacstrap
 ```bash
-pacstrap -K /mnt base base-devel linux linux-firmware vim NetWorkManager (amd-ucode / intel-ucode)
+pacstrap -K /mnt base base-devel linux linux-firmware vim netWorkmanager (amd-ucode / intel-ucode)
 ```
 
 ### 生成fstab
@@ -325,6 +336,41 @@ umount -R /mnt
 ```bash
 reboot
 ```
+
+### systemd-boot
+```bash
+bootctl install
+```
+出现 Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! 是/boot分区的权限问题
+修改fstab /boot 挂载权限 fmask=0137,dmask=0027
+来自 [Silly Cat's Blog](https://mkv.moe/post/Arch-Linux-installation-notes-for-my-own-use/)
+
+修改`/boot/loader/loader.conf`
+```text
+default arch.conf
+timeout 5
+console-mode max
+editor no
+```
+
+添加 `/boot/loader/entries/arch.conf`
+```text
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /intel-ucode.img
+initrd  /initramfs-linux.img
+options root=PARTUUID=25e9fc43-0c3b-4e5d-8320-024b85d8b7f2 rw rootfstype=ext4 add_efi_memmap loglevel=5 splash zswap.enabled=0
+```
+
+添加 `/boot/loader/entries/arch-fallback.conf`
+```text
+title   Arch Linux (fallback initramfs)
+linux   /vmlinuz-linux
+initrd  /intel-ucode.img
+initrd  /initramfs-linux-fallback.img
+options root=PARTUUID=25e9fc43-0c3b-4e5d-8320-024b85d8b7f2 rw rootfstype=ext4 add_efi_memmap loglevel=5 splash zswap.enabled=0
+```
+UUID需要改成你自己的rootfstype可以不写
 
 # 系统设置
 
