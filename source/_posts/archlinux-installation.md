@@ -24,12 +24,12 @@ highlight_shrink:
 aside:
 swiper_index: 1
 top_group_index: 1
-background: "#fff"
+background: "#ffffff"
 ---
 
 # 介绍
 
-UEFI EXT4 BTRFS ZRAM ZSWAP SWAP GRUB SYSTEMD-BOOT
+`UEFI` `EXT4` `BTRFS` `ZRAM` `ZSWAP` `SWAP` `GRUB` `SYSTEMD-BOOT`
 
 内容大部分部分来自
 
@@ -42,9 +42,33 @@ UEFI EXT4 BTRFS ZRAM ZSWAP SWAP GRUB SYSTEMD-BOOT
 
 ## 下载验证ISO
 
+### 下载ISO
+
+```text
+https://archlinux.org/releng/releases/
+
+https://mirrors.aliyun.com/archlinux/iso/
+https://mirrors.bfsu.edu.cn/archlinux/iso/
+https://mirrors.cqu.edu.cn/archlinux/iso/
+https://mirrors.hust.edu.cn/archlinux/iso/
+https://mirrors.jcut.edu.cn/archlinux/iso/
+https://mirrors.jlu.edu.cn/archlinux/iso/
+https://mirrors.jxust.edu.cn/archlinux/iso/
+https://mirrors.neusoft.edu.cn/archlinux/iso/
+https://mirrors.nju.edu.cn/archlinux/iso/
+https://mirror.nyist.edu.cn/archlinux/iso/
+https://mirrors.qlu.edu.cn/archlinux/iso/
+https://mirrors.shanghaitech.edu.cn/archlinux/iso/
+https://mirrors.sjtug.sjtu.edu.cn/archlinux/iso/
+https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/
+https://mirrors.ustc.edu.cn/archlinux/iso/
+https://mirrors.wsyu.edu.cn/archlinux/iso/
+https://mirrors.xjtu.edu.cn/archlinux/iso/
+```
+
 ### 验证签名
 
-从 [checksums](https://archlinux.org/download/#checksums) 下载ISO PGP 签名到 ISO 目录
+从 [checksums](https://archlinux.org/download/#checksums) 下载`ISO` `PGP` 签名到 `ISO` 目录
 
 ```bash
 pacman-key -v archlinux- version -x86_64.iso.sig
@@ -54,7 +78,11 @@ pacman-key -v archlinux- version -x86_64.iso.sig
 
 ### 将ISO刻录到U盘
 
+`Ventoy` `Rufus` `BalenaEtcher`
+
 ### 调整电脑为UEFI启动
+
+### 从U盘启动
 
 ## 安装
 
@@ -64,17 +92,9 @@ pacman-key -v archlinux- version -x86_64.iso.sig
 cat /sys/firmware/efi/fw_platform_size
 ```
 
-如果命令返回64，则表示系统以 UEFI 模式启动，并具有 64 位 x64 UEFI。
-如果命令返回32，则表示系统以 UEFI 模式启动，并具有 32 位 IA32 UEFI。虽然支持此功能，但它会将引导加载程序的选择限制为支持混合模式启动的加载程序。
-如果返回No such file or directory，则系统可能以BIOS（或CSM）模式启动
-
-或
-
-```bash
-ls /sys/firmware/efi/efivars
-```
-
-若输出了一堆东西(EFI变量)，则说明已在 UEFI 模式
+如果命令返回`64`，则表示系统以 UEFI 模式启动，并具有 64 位 `x64 UEFI`。
+如果命令返回`32`，则表示系统以 UEFI 模式启动，并具有 32 位 `x32 UEFI`。虽然支持此功能，但它会将引导加载程序的选择限制为支持混合模式启动的加载程序。
+如果返回No such file or directory(没有efi这个文件夹)，则系统可能以BIOS（或CSM）模式启动
 
 ### 连接网络
 
@@ -88,7 +108,6 @@ station wlan0 get-networks # 列出所有 wifi 网络
 station wlan0 connect wifi-name # 进行连接，注意这里无法输入中文。回车后输入密码即可
 exit # 连接成功后退出
 ```
-
 
 ```bash
 lspci -k | grep Network
@@ -106,7 +125,6 @@ rfkill unblock wifi
 ip link set wlan0 up
 ```
 
-
 #### 有线连接
 
 一般不会有问题
@@ -119,48 +137,43 @@ ping 1.1.1.1
 
 ### 更新系统时钟
 
+将系统时间与网络时间进行同步
 ```bash
 timedatectl set-ntp true
 timedatectl set-timezone Asia/Shanghai
 timedatectl status
 ```
 
-或者全自动
+检查服务状态
 ```bash
-bash -c "$(curl -sSL https://archlinux-sh.pages.dev/sh/mirrors.sh)"
+timedatectl
 ```
 
-将系统时间与网络时间进行同步
-
-检查服务状态
-
-## 更换pacman源
+## 更换PACMAN源
 
 ```bash
 vim /etc/pacman/mirrorlist
 ```
 
 ```text
-Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch # 中国科学技术大学开源镜像站
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch # 清华大学开源软件镜像站
-Server = https://repo.huaweicloud.com/archlinux/$repo/os/$arch # 华为开源镜像站
-Server = http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch # 兰州大学开源镜像站
-```
-
-或者全自动
-```bash
-bash -c "$(curl -sSL https://archlinux-sh.pages.dev/sh/mirrors.sh)"
+# 中国科学技术大学开源镜像站
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+# 清华大学开源软件镜像站
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+# 华为开源镜像站
+Server = https://repo.huaweicloud.com/archlinux/$repo/os/$arch
+# 兰州大学开源镜像站
+Server = http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch
 ```
 
 ## 分区
 
-使用ext4 <small>(后面可能尝试btrfs和zfs)</small>
+### EXT4
 
-btrfs可以查看[ArchLinux 简明指南](https://arch.icekylin.online/guide/rookie/basic-install.html#_7-%E5%88%86%E5%8C%BA%E5%92%8C%E6%A0%BC%E5%BC%8F%E5%8C%96-%E4%BD%BF%E7%94%A8-btrfs-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F)
-
-### 创建分区
+#### 创建分区
 
 查看分区
+
 ```bash
 lsblk
 ```
@@ -175,24 +188,22 @@ fdisk /dev/要分区的磁盘
 ```
 
 ```bash
-cfdisk # 有TUI
+cfdisk /dev/要分区的磁盘
 ```
 
-### 格式化分区
+#### 格式化分区
 
 格式化 EFI 分区
 ```bash
 mkfs.fat -F32 /dev/nvmexn1pn
 ```
 
-格式化 ext4 分区
+格式化 EXT4 分区
 ```bash
 mkfs.ext4 /dev/nvmexn1pn
 ```
 
-不使用swap
-
-### 挂载分区
+#### 挂载分区
 
 挂载根目录
 ```bash
@@ -204,24 +215,31 @@ mount /dev/nvmexn1pn /mnt
 mount --mkdir /dev/nvmexn1pn /mnt/boot
 ```
 
-### 检查挂载情况
+#### 检查挂载情况
 
 ```bash
 df -h
 ```
 
+### BTRFS
+
+还没写
+
+### MORE
+
+可能还有更多
+
 ## 安装系统
 
-### pacstrap安装软件
+### PACSTRAP
 
-pacstrap
 ```bash
-pacstrap -K /mnt base base-devel linux linux-firmware vim netWorkmanager (amd-ucode / intel-ucode)
+pacstrap -K /mnt base base-devel linux linux-firmware vim networkmanager (amd-ucode / intel-ucode)
 ```
+(amd-ucode / intel-ucode) 根据你的CPU选择
 
-### 生成fstab
+### FSTAB
 
-生成fstab
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
@@ -232,20 +250,22 @@ cat /mnt/etc/fstab
 
 ### 系统设置
 
-#### chroot
-chroot
+#### CHROOT
+
 ```bash
 arch-chroot /mnt
 ```
 
 #### 设置主机名
+
 设置主机名
 ```bash
 vim /etc/hostname
 ```
 
 #### 设置时间
-设置时区
+
+设置本地时间时区
 ```bash
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 ```
@@ -255,74 +275,139 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 hwclock --systohc
 ```
 
-#### locale.gen
-locale.gen
+#### LOCALE
+
+##### locale.gen
+
 ```bash
 vim /etc/locale.gen
 ```
-去掉 en_US.UTF-8 UTF-8 和 zh_CN.UTF-8 UTF-8 前面的注释
+去掉 `en_US.UTF-8 UTF-8` 和 `zh_CN.UTF-8 UTF-8` 前面的注释
+
+也可以进系统再执行
 ```bash
 locale-gen
 ```
 
-#### locale.conf
-locale.conf
+##### locale.conf
+
 ```bash
 vim /etc/locale.conf
 ```
-写入LANG=en_US.UTF-8
+写入`LANG=en_US.UTF-8`
+
 或者直接一条命令
 ```bash
 echo 'LANG=en_US.UTF-8'  > /etc/locale.conf
 ```
 
 #### 密码
-设置密码
+
+设置root密码
+
 ```bash
 passwd
 ```
 
-#### vconsole
-这个是KEYMAP
+#### VCONSOLE
+
 vconsole.conf
+
+这个是KEYMAP
+
 ```bash
 vim /etc/vconsole.conf
 ```
 
+写入
+```text
+KEYMAP=us
+```
 
-#### Initramfs
-更新 Initramfs
+#### INITRAMFS
+
+更新 `initramfs`
+
 ```bash
 mkinitcpio -P
 ```
 
 ## 安装引导
 
-### grub
+### GRUB
+
 安装需要的包
+
 ```bash
-pacman -S grub efibootmgr
+pacman -S grub efibootmgr (os-prober)
 ```
+(os-prober) 如果你没有其他系统可以不安装
+
 安装grub
+
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ```
+(如果这样不能启动尝试添加`--removable`)
+
 修改grub默认配置文件
 ```bash
 vim /etc/default/grub
 ```
-修改启动参数
-GRUB_CMDLINE_LINUX_DEFAULT
 
+修改启动参数
+`GRUB_CMDLINE_LINUX_DEFAULT`
 修改日志等级为5
-loglevel=5
+`loglevel=5`
 
 生成配置文件
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-如果不行尝试添加`--removable`
+### SYSTEMD-BOOT
+
+```bash
+bootctl install
+```
+
+出现 <font color='red' >Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! </font>
+是 `/boot` 分区的权限问题
+修改`/etc/fstab` `/boot` 挂载权限 `fmask=0137,dmask=0027`
+来自 [Silly Cat's Blog](https://mkv.moe/post/Arch-Linux-installation-notes-for-my-own-use/)
+
+修改`/boot/loader/loader.conf`
+```text
+default arch.conf
+timeout 0 Space
+console-mode max
+editor no
+```
+
+添加 `/boot/loader/entries/arch.conf`
+```text
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /intel-ucode.img
+initrd  /initramfs-linux.img
+options root=UUID=25e9fc43-0c3b-4e5d-8320-024b85d8b7f2 rw rootfstype=ext4 add_efi_memmap loglevel=5
+```
+
+添加 `/boot/loader/entries/arch-fallback.conf`
+```text
+title   Arch Linux (fallback initramfs)
+linux   /vmlinuz-linux
+initrd  /intel-ucode.img
+initrd  /initramfs-linux-fallback.img
+options root=UUID=25e9fc43-0c3b-4e5d-8320-024b85d8b7f2 rw rootfstype=ext4 add_efi_memmap loglevel=5
+```
+
+25e9fc43-0c3b-4e5d-8320-024b85d8b7f2需要改成你自己的`UUID`
+`rootfstype`可以不写
+
+启动参数根据需要添加
+
+## 结束
 
 完成安装
 ```bash
@@ -337,61 +422,30 @@ umount -R /mnt
 reboot
 ```
 
-### systemd-boot
-```bash
-bootctl install
-```
-出现 Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! 是/boot分区的权限问题
-修改fstab /boot 挂载权限 fmask=0137,dmask=0027
-来自 [Silly Cat's Blog](https://mkv.moe/post/Arch-Linux-installation-notes-for-my-own-use/)
-
-修改`/boot/loader/loader.conf`
-```text
-default arch.conf
-timeout 5
-console-mode max
-editor no
-```
-
-添加 `/boot/loader/entries/arch.conf`
-```text
-title   Arch Linux
-linux   /vmlinuz-linux
-initrd  /intel-ucode.img
-initrd  /initramfs-linux.img
-options root=PARTUUID=25e9fc43-0c3b-4e5d-8320-024b85d8b7f2 rw rootfstype=ext4 add_efi_memmap loglevel=5 splash zswap.enabled=0
-```
-
-添加 `/boot/loader/entries/arch-fallback.conf`
-```text
-title   Arch Linux (fallback initramfs)
-linux   /vmlinuz-linux
-initrd  /intel-ucode.img
-initrd  /initramfs-linux-fallback.img
-options root=PARTUUID=25e9fc43-0c3b-4e5d-8320-024b85d8b7f2 rw rootfstype=ext4 add_efi_memmap loglevel=5 splash zswap.enabled=0
-```
-UUID需要改成你自己的rootfstype可以不写
-
 # 系统设置
 
-## zram
-安装zram-generator
+## ZRAM
+
+安装`zram-generator`
 ```bash
 pacman -S zram-generator
 ```
-创建/etc/systemd/zram-generator.conf
+
+创建`/etc/systemd/zram-generator.conf`
+
 写入
 ```text
 [zram0]
 zram-size = min(ram / 2, 4096)
 compression-algorithm = zstd
 ```
-关闭zswap
+
+关闭`zswap`
 ```bash
 echo 0 > /sys/module/zswap/parameters/enabled
 ```
 
-启动zram-generator
+启动`zram-generator`
 ```bash
 systemctl daemon-reload
 ```
@@ -400,17 +454,13 @@ systemctl daemon-reload
 systemctl start systemd-zram-setup@zram0.service
 ```
 
-修改grub配置文件
-```bash
-vim /etc/default/grub
-```
-修改启动参数
-```text
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=5 zswap.enabled=0"
-```
+启动参数添加`zswap.enabled=0`
 
-## swapfile
-(用来支持休眠)
+## SWAPFILE
+
+### EXT4
+
+(如果你用zram可以添加swapfile休眠)
 创建交换文件
 
 ```bash
@@ -435,17 +485,21 @@ swapoff /swapfile
 ```bash
 rm -f /swapfile
 ```
-从 /etc/fstab 中移除相关条目
+从 `/etc/fstab` 中移除相关条目
 
-## plymouth
-安装plymouth
+### BTRFS
+
+还没写
+
+### MORE
+
+## PLYMOUTH
+(开机动画)
+
+安装`plymouth`
+
 ```bash
 pacman -S plymouth
-```
-
-查看默认主题
-```bash
-plymouth-set-default-theme
 ```
 
 编辑mkinitcpio.conf
@@ -458,39 +512,74 @@ vim /etc/mkinitcpio.conf
 HOOKS=(... plymouth ...)
 ```
 
-如果使用systemd，它必须位于plymouth之前
+如果使用`systemd`，它必须位于`plymouth`之前
 
-此外，如果你的系统使用 dm-crypt 加密，请确保在 encrypt 或 sd-encrypt 之前放置 plymouth
+此外，如果你的系统使用 `dm-crypt` 加密，请确保在 encrypt 或 `sd-encrypt` 之前放置 `plymouth`
 
-更新 Initramfs
+更新 `Initramfs`
 ```bash
 mkinitcpio -P
 ```
 
-修改grub配置文件
+启动参数添加`splash`
+
+查看所有主题
 ```bash
-vim /etc/default/grub
+plymouth-set-default-theme -l
 ```
-修改启动参数
+
+查看默认主题
+```bash
+plymouth-set-default-theme
+```
+
+修改主题
+```bash
+plymouth-set-default-theme <theme-name>
+```
+
+## PACMAN
+
+编辑`pacman.conf`
+```bash
+vim /etc/pacman.conf
+```
+
+去掉`[multilib]`选项的注释
 ```text
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=5 splash zswap.enabled=0"
+#[core-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[core]
+Include = /etc/pacman.d/mirrorlist
+
+#[extra-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[extra]
+Include = /etc/pacman.d/mirrorlist
+
+# If you want to run 32 bit applications on your x86_64 system,
+# enable the multilib repositories as required here.
+
+#[multilib-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist
 ```
 
-## 配置pacman.conf
-编辑pacman.conf
-```bash
-vim /etc/pacman.conf|
-```
-
-去掉 [multilib] 两行的注释
-
-添加
+添加`archlinuxcn`源
 ```text
 [archlinuxcn]
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch # 中国科学技术大学开源镜像站
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch # 清华大学开源软件镜像站
-Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch # 哈尔滨工业大学开源镜像站
-Server = https://repo.huaweicloud.com/archlinuxcn/$arch # 华为开源镜像站
+# 中国科学技术大学开源镜像站
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+# 清华大学开源软件镜像站
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+# 哈尔滨工业大学开源镜像站
+Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch
+# 华为开源镜像站
+Server = https://repo.huaweicloud.com/archlinuxcn/$arch
 ```
 
 ## 创建用户
@@ -513,6 +602,35 @@ pacman -S sudo
 添加sudo权限
 ```
 vim /etc/sudoers
+```
+
+## AUR
+`paru` `yay`
+
+如果添加了`archlinuxcn`可以直接安装
+```bash
+pacman -S yay paru
+```
+
+
+
+手动安装
+```bash
+pacman -S git
+```
+
+`paru`
+```bash
+git clone https://aur.archlinux.org/paru-bin.git
+cd paru-bin
+makepkg -sir
+```
+
+`yay`
+```bash
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -sir
 ```
 
 ## 其他的一些包

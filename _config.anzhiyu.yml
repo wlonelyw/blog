@@ -30,12 +30,12 @@ nav:
       item:
         - name: 博客
           link: https://blog.esajk.top/
-          icon: assets/img/favicon.png
+          icon: /assets/img/favicon.png
     - title: 空的
       item:
         - name: 空的
           link: https://github.io/
-          icon: assets/img/favicon.png
+          icon: /assets/img/favicon.png
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
 mourn:
@@ -134,7 +134,7 @@ katex:
 # --------------------------------------
 
 # Favicon（网站图标）
-favicon: assets/img/favicon.png
+favicon: /assets/img/favicon.png
 
 # Avatar (头像)
 avatar:
@@ -456,7 +456,7 @@ footer:
       #   message: 本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可
   socialBar:
     enable: true
-    centerImg:
+    centerImg: /assets/img/favicon.png
     left:
       # - title: email
       #   link: mailto:anzhiyu-c@qq.com
