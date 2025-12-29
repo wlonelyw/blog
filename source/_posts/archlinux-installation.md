@@ -27,13 +27,16 @@ top_group_index: 1
 background: "#ffffff"
 ---
 
+  {% p center logo large, Arch %}
+  {% p center small, I-use-arch-btw %}
+
 # 介绍
 
-`UEFI` `EXT4` `BTRFS` `ZRAM` `ZSWAP` `SWAP` `GRUB` `SYSTEMD-BOOT`
+`UEFI` `EXT4` `BTRFS` `ZRAM` `SWAP` `ZSWAP` `GRUB` `SYSTEMD-BOOT`
 
 内容大部分部分来自
 
-[Archlinux Wiki](https://wiki.archlinux.org/title/Installation_guide)
+[Archlinux Wiki](https://wiki.archlinux.org/)
 
 [ArchLinux 简明指南](https://arch.icekylin.online/)
 
@@ -168,66 +171,113 @@ Server = http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch
 
 ## 分区
 
-### EXT4
-
-#### 创建分区
+### 创建分区
 
 查看分区
 
+{% tabs lsdisk %}
+<!-- tab lsblk -->
 ```bash
 lsblk
 ```
-
+<!-- endtab -->
+<!-- tab fdisk -l -->
 ```bash
 fdisk -l
 ```
+<!-- endtab -->
+{% endtabs %}
 
 分区
-```bash
-fdisk /dev/要分区的磁盘
-```
 
+{% tabs cfdisk %}
+<!-- tab fdisk -->
 ```bash
-cfdisk /dev/要分区的磁盘
+fdisk /dev/nvmexn1pn
+```
+<!-- endtab -->
+<!-- tab cfdisk -->
+```bash
+cfdisk /dev/nvmexn1pn
+```
+<!-- endtab -->
+{% endtabs %}
+
+如果你是一整个磁盘装可以先
+```bash
+mkfs /dev/nvmexn1pn
 ```
 
 #### 格式化分区
 
+{% tabs mkfs %}
+<!-- tab ext4 -->
 格式化 EFI 分区
 ```bash
 mkfs.fat -F32 /dev/nvmexn1pn
 ```
-
 格式化 EXT4 分区
 ```bash
 mkfs.ext4 /dev/nvmexn1pn
 ```
+<!-- endtab -->
+<!-- tab btrfs -->
+格式化 EFI 分区
+```bash
+mkfs.fat -F32 /dev/nvmexn1pn
+```
+格式化 BTRFS 分区
+```bash
+mkfs.btrfs -L 自定义卷标 /dev/nvmexn1pn
+```
+<!-- endtab -->
+{% endtabs %}
 
 #### 挂载分区
 
+{% tabs mount %}
+<!-- tab ext4 -->
 挂载根目录
 ```bash
 mount /dev/nvmexn1pn /mnt
 ```
-
 挂载EFI
 ```bash
 mount --mkdir /dev/nvmexn1pn /mnt/boot
 ```
+<!-- endtab -->
+<!-- tab btrfs -->
+先挂载到/mnt
+```bash
+mount -t btrfs -o compress=zstd /dev/nvmexn1pn /mnt
+```
+创建子卷
+```bash
+btrfs subvolume create /mnt/@
+btrfs subvolume create /mnt/@home
+```
+查看所有子卷
+```bash
+btrfs subvolume list -p /mnt
+```
+取消挂载
+```bash
+umount /mnt
+```
+重新挂载
+```
+mount -t btrfs -o subvol=/@,compress=zstd /dev/sdxn /mnt
+mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvmexn1pn /mnt/home
+mount --mkdir /dev/nvmexn1pn /mnt/boot
+```
+<!-- endtab -->
+{% endtabs %}
 
-#### 检查挂载情况
+### 检查挂载情况
 
 ```bash
 df -h
 ```
-
-### BTRFS
-
-还没写
-
-### MORE
-
-可能还有更多
 
 ## 安装系统
 
@@ -458,26 +508,23 @@ systemctl start systemd-zram-setup@zram0.service
 
 ## SWAPFILE
 
-### EXT4
-
-(如果你用zram可以添加swapfile休眠)
-创建交换文件
-
+{% tabs swapfile %}
+<!-- tab ext4 -->
+(如果你使用`zram`可以添加`swapfile`休眠)
+创建`swapfile`
 ```bash
 mkswap -U clear --size 8G --file /swapfile
 ```
-
-启用交换文件
+启用`swapfile`
 ```bash
 swapon /swapfile
 ```
-
-添加到 /etc/fstab 中
+添加到`/etc/fstab`中
 ```text
 /swapfile none swap defaults 0 0
 ```
 
-删除交换文件
+删除`swapfile`
 ```bash
 swapoff /swapfile
 ```
@@ -485,13 +532,12 @@ swapoff /swapfile
 ```bash
 rm -f /swapfile
 ```
-从 `/etc/fstab` 中移除相关条目
-
-### BTRFS
-
+从`/etc/fstab`中移除相关条目
+<!-- endtab -->
+<!-- tab btrfs -->
 还没写
-
-### MORE
+<!-- endtab -->
+{% endtabs %}
 
 ## PLYMOUTH
 (开机动画)
@@ -635,5 +681,35 @@ makepkg -sir
 
 ## 其他的一些包
 ```text
+# pacman
+adobe-source-han-sans-cn-fonts
+adobe-source-han-serif-cn-fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
+wqy-microhei
+wqy-microhei-lite
+wqy-bitmapfont
+wqy-zenhei
+ttf-arphic-ukai
+ttf-arphic-uming
+ttf-jetbrains-mono-nerd
 
+nvidia
+nvidi-open-dkms
+nvidia-settings
+lib32-opencl-nvidia
+nvidia-utils
+lib32-nvidia-utils
+opencl-nvidia
+
+net-tools
+dnsmasq
+
+lolcat
+fastfetch
+
+# aur
+ttf-ms-win11-auto
 ```
